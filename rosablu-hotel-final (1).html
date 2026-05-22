@@ -1,0 +1,2300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RosaBlu Hotel Kutus — A Fairytale Escape</title>
+  <meta name="description" content="Boutique Studio Rooms, Signature Dining & Lush Spaces in Kutus, Kirinyaga County. Book direct via WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — ROSABLU BRAND DESIGN SYSTEM
+    ============================================================ */
+    :root {
+      --brand-navy:   #0b1528;
+      --brand-yellow: #f5d000;
+      --bg-light:     #ffffff;
+      --bg-subtle:    #f9f6f0;
+      --text-main:    #1a202c;
+      --text-muted:   #5a6478;
+      --border:       rgba(11,21,40,0.10);
+      --gold-glow:    rgba(245,208,0,0.18);
+      --radius-sm:    6px;
+      --radius-md:    14px;
+      --radius-lg:    24px;
+      --shadow-card:  0 4px 32px rgba(11,21,40,0.10);
+      --shadow-lift:  0 12px 48px rgba(11,21,40,0.18);
+      --transition:   0.3s cubic-bezier(0.4,0,0.2,1);
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+      --max-w:        1200px;
+      --nav-h:        72px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text-main);
+      background: var(--bg-light);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
+
+    /* ============================================================
+       UTILITY CLASSES
+    ============================================================ */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+    /* ============================================================
+       FIXED NAVIGATION BAR
+    ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--brand-navy);
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 2px solid rgba(245,208,0,0.15);
+      transition: box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      box-shadow: 0 4px 40px rgba(11,21,40,0.45);
+    }
+    #navbar .container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* --- Logo --- */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--brand-yellow);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(245,208,0,0.25);
+    }
+    .logo-icon svg { width: 26px; height: 26px; }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .logo-text span:first-child {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brand-yellow);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .logo-text span:last-child {
+      font-size: 0.625rem;
+      font-weight: 500;
+      color: rgba(245,208,0,0.55);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    /* --- Desktop Nav Links --- */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+    }
+    .nav-links a:hover {
+      color: var(--brand-yellow);
+      background: rgba(245,208,0,0.08);
+    }
+    .nav-cta-btn {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-navy) !important;
+      background: var(--brand-yellow) !important;
+      padding: 10px 20px !important;
+      border-radius: var(--radius-sm) !important;
+      letter-spacing: 0.06em;
+      transition: opacity var(--transition), transform var(--transition) !important;
+    }
+    .nav-cta-btn:hover { opacity: 0.88; transform: translateY(-1px) !important; }
+
+    /* --- Hamburger --- */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px; height: 40px;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition);
+    }
+    .hamburger:hover { background: rgba(245,208,0,0.12); }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: var(--brand-yellow);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition), width var(--transition);
+    }
+    .hamburger span:nth-child(1) { width: 100%; }
+    .hamburger span:nth-child(2) { width: 75%; }
+    .hamburger span:nth-child(3) { width: 55%; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 100%; }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 100%; }
+
+    /* --- Mobile Nav Drawer --- */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: var(--brand-navy);
+      border-top: 1px solid rgba(245,208,0,0.12);
+      z-index: 999;
+      padding: 20px 24px 28px;
+      flex-direction: column;
+      gap: 4px;
+      animation: slideDown 0.25s ease;
+    }
+    .mobile-menu.open { display: flex; }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .mobile-menu a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 12px 8px;
+      border-bottom: 1px solid rgba(245,208,0,0.07);
+      letter-spacing: 0.05em;
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--brand-yellow); }
+    .mobile-menu .mobile-cta {
+      margin-top: 12px;
+      padding: 14px;
+      background: var(--brand-yellow);
+      color: var(--brand-navy);
+      text-align: center;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      border-bottom: none;
+      letter-spacing: 0.06em;
+    }
+
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img { object-position: center 30%; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(11,21,40,0.82) 0%,
+        rgba(11,21,40,0.55) 55%,
+        rgba(11,21,40,0.38) 100%
+      );
+      z-index: 1;
+    }
+    /* Decorative geometric accent */
+    .hero-geo {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(225deg, rgba(245,208,0,0.06) 0%, transparent 60%);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 720px;
+      padding: 80px 0 60px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--brand-yellow);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s ease forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px; height: 1px;
+      background: var(--brand-yellow);
+    }
+    .hero-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300;
+      color: var(--bg-light);
+      line-height: 1.06;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s ease forwards;
+    }
+    .hero-heading em {
+      font-style: italic;
+      color: var(--brand-yellow);
+    }
+    .hero-tagline {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s ease forwards;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s ease forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Buttons --- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--brand-yellow);
+      color: var(--brand-navy);
+    }
+    .btn-primary:hover {
+      background: #ffd900;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(245,208,0,0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--bg-light);
+      border-color: rgba(255,255,255,0.4);
+    }
+    .btn-outline:hover {
+      border-color: var(--brand-yellow);
+      color: var(--brand-yellow);
+      transform: translateY(-2px);
+    }
+
+    /* --- Hero Scroll Hint --- */
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      animation: fadeUp 1s 1.2s ease forwards;
+      opacity: 0;
+    }
+    .scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(245,208,0,0.6), transparent);
+      animation: scrollPulse 2s 1.5s ease infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { transform: scaleY(1); opacity: 1; }
+      50%      { transform: scaleY(0.6); opacity: 0.4; }
+    }
+
+    /* ============================================================
+       SECTION SHARED STYLES
+    ============================================================ */
+    section { padding: 96px 0; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--brand-yellow);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--brand-yellow);
+    }
+    .section-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--text-main);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .section-heading em {
+      font-style: italic;
+      color: var(--brand-navy);
+    }
+
+    /* ============================================================
+       FEATURES GRID
+    ============================================================ */
+    #features { background: var(--bg-subtle); }
+    #features .section-intro {
+      max-width: 560px;
+      margin-bottom: 64px;
+    }
+    #features .section-intro p {
+      margin-top: 18px;
+      font-size: 1.0rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .feature-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lift);
+    }
+    .feature-card-img {
+      height: 240px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .feature-card-img img {
+      transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .feature-card:hover .feature-card-img img {
+      transform: scale(1.05);
+    }
+    .feature-card-body {
+      padding: 28px 30px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .feature-card-icon {
+      width: 42px; height: 42px;
+      background: var(--brand-navy);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .feature-card-icon svg { width: 20px; height: 20px; stroke: var(--brand-yellow); }
+    .feature-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--brand-navy);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .feature-card-cta {
+      margin-top: 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-navy);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: gap var(--transition), color var(--transition);
+    }
+    .feature-card-cta:hover { gap: 12px; color: var(--brand-yellow); }
+    .feature-card-cta svg { width: 16px; height: 16px; stroke: currentColor; }
+    /* Local Excursions card spans full width */
+    .feature-card.full-span { grid-column: 1 / -1; flex-direction: row; }
+    .feature-card.full-span .feature-card-img { height: auto; width: 42%; min-height: 360px; }
+    .feature-card.full-span .feature-card-body { padding: 40px 44px; }
+
+    /* Google Maps iframe inside the excursions card */
+    .map-embed-wrapper {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md) 0 0 var(--radius-md);
+    }
+    .map-embed-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      filter: saturate(0.88) contrast(1.04);
+      transition: filter var(--transition);
+    }
+    .map-embed-wrapper:hover iframe {
+      filter: saturate(1) contrast(1);
+    }
+
+    /* ============================================================
+       VALENTINE'S PACKAGE SECTION
+    ============================================================ */
+    #packages {
+      background: var(--brand-navy);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Decorative background elements */
+    #packages::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,208,0,0.08);
+      pointer-events: none;
+    }
+    #packages::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,208,0,0.06);
+      pointer-events: none;
+    }
+    #packages .section-heading { color: var(--bg-light); }
+    #packages .section-heading em { color: var(--brand-yellow); }
+    #packages .section-intro {
+      margin-bottom: 56px;
+    }
+    #packages .section-intro p {
+      margin-top: 16px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      position: relative; z-index: 1;
+    }
+    .pkg-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(245,208,0,0.18);
+      border-radius: var(--radius-md);
+      padding: 40px 36px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .pkg-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--brand-yellow);
+      opacity: 0.6;
+      transition: opacity var(--transition);
+    }
+    .pkg-card:hover {
+      background: rgba(245,208,0,0.06);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+    .pkg-card:hover::before { opacity: 1; }
+    .pkg-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--brand-yellow);
+      color: var(--brand-navy);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+    .pkg-badge svg { width: 12px; height: 12px; }
+    .pkg-price {
+      font-family: var(--font-heading);
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: var(--brand-yellow);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pkg-price sup { font-size: 1.4rem; vertical-align: super; }
+    .pkg-price-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+      margin-bottom: 22px;
+    }
+    .pkg-name {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--bg-light);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+    .pkg-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .pkg-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.5;
+    }
+    .pkg-includes li::before {
+      content: '';
+      display: block;
+      width: 18px; height: 18px;
+      min-width: 18px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5d000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
+      margin-top: 1px;
+    }
+    .pkg-book-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--brand-yellow);
+      color: var(--brand-navy);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .pkg-book-btn:hover {
+      background: #ffd900;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245,208,0,0.35);
+    }
+    .pkg-book-btn svg { width: 18px; height: 18px; }
+
+    /* ============================================================
+       RESERVATION FORM SECTION
+    ============================================================ */
+    #reserve {
+      background: var(--bg-subtle);
+    }
+    .reserve-layout {
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 64px;
+      align-items: start;
+    }
+    .reserve-info h2 {
+      margin-bottom: 20px;
+    }
+    .reserve-info p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+    .contact-list li .contact-icon {
+      width: 40px; height: 40px;
+      background: var(--brand-navy);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-list li .contact-icon svg { width: 18px; height: 18px; stroke: var(--brand-yellow); }
+    .contact-list li a { color: var(--brand-navy); font-weight: 500; transition: color var(--transition); }
+    .contact-list li a:hover { color: var(--brand-yellow); }
+
+    /* --- Reservation Form Card --- */
+    .reserve-form-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      padding: 40px 36px;
+      box-shadow: var(--shadow-lift);
+      border: 1px solid var(--border);
+      position: sticky;
+      top: calc(var(--nav-h) + 24px);
+    }
+    .reserve-form-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--brand-navy);
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-main);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid rgba(11,21,40,0.15);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-main);
+      background: var(--bg-light);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--brand-navy);
+      box-shadow: 0 0 0 3px rgba(11,21,40,0.08);
+    }
+    .form-group input.error { border-color: #e53e3e; animation: shake 0.4s ease; }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-5px); }
+      75%      { transform: translateX(5px); }
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: #25D366;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .form-submit-btn:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+    }
+    .form-submit-btn svg { width: 20px; height: 20px; }
+    .form-note {
+      margin-top: 14px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .estimator-trigger {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px;
+      background: transparent;
+      border: 1.5px dashed rgba(11,21,40,0.25);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all var(--transition);
+    }
+    .estimator-trigger:hover {
+      border-color: var(--brand-navy);
+      color: var(--brand-navy);
+      background: rgba(11,21,40,0.03);
+    }
+    .estimator-trigger svg { width: 16px; height: 16px; }
+
+    /* ============================================================
+       SLIDING COST ESTIMATOR DRAWER
+    ============================================================ */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(11,21,40,0.55);
+      z-index: 1100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      backdrop-filter: blur(2px);
+    }
+    .drawer-backdrop.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .estimator-drawer {
+      position: fixed;
+      top: 0; right: 0;
+      width: 460px;
+      max-width: 100vw;
+      height: 100%;
+      background: var(--bg-light);
+      z-index: 1200;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -12px 0 60px rgba(11,21,40,0.25);
+    }
+    .estimator-drawer.open { transform: translateX(0); }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
+      background: var(--brand-navy);
+    }
+    .drawer-header h2 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--bg-light);
+    }
+    .drawer-header span {
+      display: block;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
+    .drawer-close {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.8);
+      transition: background var(--transition);
+      flex-shrink: 0;
+    }
+    .drawer-close:hover { background: rgba(255,255,255,0.2); }
+    .drawer-close svg { width: 18px; height: 18px; stroke: currentColor; }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px;
+    }
+    .drawer-body::-webkit-scrollbar { width: 4px; }
+    .drawer-body::-webkit-scrollbar-thumb { background: rgba(11,21,40,0.15); border-radius: 4px; }
+
+    .estimator-section-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin: 0 0 16px;
+    }
+    .estimator-field {
+      margin-bottom: 20px;
+    }
+    .estimator-field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-main);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .estimator-field select,
+    .estimator-field input[type="number"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid rgba(11,21,40,0.15);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-main);
+      background: var(--bg-light);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .estimator-field select:focus,
+    .estimator-field input[type="number"]:focus {
+      border-color: var(--brand-navy);
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color var(--transition);
+    }
+    .checkbox-row:hover { border-color: var(--brand-navy); }
+    .checkbox-row input[type="checkbox"] {
+      width: 18px; height: 18px;
+      accent-color: var(--brand-navy);
+      cursor: pointer;
+    }
+    .checkbox-row .checkbox-label {
+      flex: 1;
+    }
+    .checkbox-row .checkbox-label span:first-child {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+    .checkbox-row .checkbox-label span:last-child {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+    /* --- Total Display Box --- */
+    .total-box {
+      background: var(--brand-navy);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      text-align: center;
+      margin: 24px 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .total-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(245,208,0,0.15) 0%, transparent 70%);
+    }
+    .total-box .total-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      position: relative; z-index: 1;
+    }
+    .total-box .total-amount {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--brand-yellow);
+      line-height: 1;
+      position: relative; z-index: 1;
+      transition: all 0.3s ease;
+    }
+    .total-box .total-currency {
+      font-size: 1.6rem;
+      vertical-align: super;
+    }
+    .total-box .total-breakdown {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      position: relative; z-index: 1;
+      text-align: left;
+    }
+    .total-box .total-breakdown span { display: block; }
+    .billing-disclaimer {
+      font-size: 0.72rem;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* ============================================================
+       GUEST EXPERIENCES & REVIEWS SECTION
+    ============================================================ */
+    #testimonials {
+      background: var(--bg-light);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Subtle background texture via radial gradient */
+    #testimonials::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(245,208,0,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #testimonials .section-intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 64px;
+    }
+    #testimonials .section-intro .section-label {
+      justify-content: center;
+    }
+    #testimonials .section-intro .section-label::before { display: none; }
+    #testimonials .section-intro .section-label::after {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--brand-yellow);
+    }
+    #testimonials .section-intro p {
+      margin-top: 18px;
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-card {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      padding: 40px 36px 36px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lift);
+      border-color: rgba(245,208,0,0.4);
+    }
+
+    /* Giant decorative opening quotation mark */
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: var(--font-heading);
+      font-size: 7rem;
+      font-weight: 700;
+      color: var(--brand-yellow);
+      line-height: 0.7;
+      position: absolute;
+      top: 28px; left: 30px;
+      opacity: 0.18;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Yellow top accent bar */
+    .testimonial-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--brand-yellow), transparent);
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .testimonial-card:hover::after { opacity: 1; }
+
+    /* Star rating row */
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .testimonial-stars span {
+      color: var(--brand-yellow);
+      font-size: 0.9rem;
+    }
+
+    /* The quote text */
+    .testimonial-quote {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-main);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Divider line between quote and author */
+    .testimonial-divider {
+      width: 36px;
+      height: 1.5px;
+      background: var(--brand-yellow);
+      margin-bottom: 20px;
+      border-radius: 2px;
+    }
+
+    /* Author block */
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .testimonial-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--brand-navy);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--brand-yellow);
+      border: 2px solid rgba(245,208,0,0.2);
+    }
+    .testimonial-author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .testimonial-author-name {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--brand-navy);
+      letter-spacing: 0.02em;
+    }
+    .testimonial-author-role {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* Trust bar below testimonials */
+    .trust-bar {
+      margin-top: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding: 28px 32px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+    }
+    .trust-item .trust-value {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+      line-height: 1;
+    }
+    .trust-item .trust-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .trust-sep {
+      width: 1px;
+      height: 48px;
+      background: var(--border);
+    }
+
+    /* Responsive testimonials */
+    @media (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+      .trust-sep { display: none; }
+      .trust-bar { gap: 28px; }
+    }
+    @media (min-width: 600px) and (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--brand-navy);
+      padding: 64px 0 32px;
+      border-top: 2px solid rgba(245,208,0,0.12);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand p {
+      margin-top: 18px;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--brand-yellow);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col ul a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+    .footer-col ul a:hover { color: var(--brand-yellow); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-bottom span {
+      color: var(--brand-yellow);
+    }
+
+    /* ============================================================
+       TOAST NOTIFICATION
+    ============================================================ */
+    .toast {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      background: var(--brand-navy);
+      color: var(--bg-light);
+      padding: 14px 22px;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--brand-yellow);
+      font-size: 0.875rem;
+      z-index: 2000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      max-width: 340px;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ============================================================
+       RESPONSIVE — TABLET & MOBILE
+    ============================================================ */
+    @media (max-width: 960px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-card.full-span { flex-direction: column; }
+      .feature-card.full-span .feature-card-img { height: 280px; width: 100%; min-height: unset; }
+      .map-embed-wrapper {
+        min-height: 280px;
+        border-radius: var(--radius-md) var(--radius-md) 0 0;
+      }
+      .map-embed-wrapper iframe { min-height: 280px; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .reserve-layout { grid-template-columns: 1fr; }
+      .reserve-form-card { position: static; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .features-grid { gap: 20px; }
+      .packages-grid { gap: 20px; }
+      .pkg-card { padding: 28px 24px; }
+      .reserve-form-card { padding: 28px 22px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .hero-heading { font-size: 2.6rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { text-align: center; justify-content: center; }
+      .logo-text span:first-child { font-size: 0.95rem; }
+      .estimator-drawer { width: 100vw; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     FIXED NAVIGATION BAR
+============================================================ -->
+<nav id="navbar" aria-label="Main Navigation">
+  <div class="container">
+    <!-- Logo -->
+    <a href="#hero" class="nav-logo" aria-label="RosaBlu Hotel Kutus — Home">
+      <div class="logo-icon">
+        <!-- Sleeping Man Bed Icon (SVG) -->
+        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Bed base -->
+          <rect x="2" y="14" width="22" height="7" rx="2" fill="#0b1528"/>
+          <!-- Pillow -->
+          <rect x="3" y="11" width="8" height="5" rx="1.5" fill="#0b1528" stroke="#0b1528" stroke-width="0.5"/>
+          <!-- Sleeping person head -->
+          <circle cx="18" cy="10" r="3" fill="#0b1528"/>
+          <!-- Legs -->
+          <path d="M4 21 L4 24 M22 21 L22 24" stroke="#0b1528" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span>RosaBlu Hotel</span>
+        <span>Kutus · Kirinyaga</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <ul class="nav-links" role="list">
+      <li><a href="#features">Rooms & Dining</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#reserve">Reserve</a></li>
+      <li><a href="#reserve" class="nav-cta-btn" id="navBookBtn">Book Now</a></li>
+    </ul>
+
+    <!-- Hamburger Button -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu -->
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+  <a href="#features" class="mobile-link">Rooms &amp; Dining</a>
+  <a href="#packages" class="mobile-link">Valentine's Packages</a>
+  <a href="#testimonials" class="mobile-link">Guest Reviews</a>
+  <a href="#reserve" class="mobile-link">Make a Reservation</a>
+  <a href="#reserve" class="mobile-cta">Book Your Stay →</a>
+</nav>
+
+
+<!-- ============================================================
+     HERO SECTION — CINEMATIC CANVAS
+============================================================ -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img
+      src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200"
+      alt="RosaBlu Hotel warm boutique terrace aesthetic"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-geo" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Boutique Hotel · Kutus, Kenya</div>
+
+      <h1 class="hero-heading">
+        A Fairytale<br />
+        <em>Escape</em> in Kutus
+      </h1>
+
+      <p class="hero-tagline">
+        Boutique Studio Rooms, Signature Dining, and Lush Spaces just<br />
+        200m off the Kutus-Samson Corner Road.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#reserve" class="btn btn-primary">
+          Book Your Stay
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <button class="btn btn-outline" id="heroEstimatorBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          View Packages &amp; Pricing
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FEATURES GRID — CURATED OFFERINGS
+============================================================ -->
+<section id="features" aria-label="Hotel Features">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-label">Our Offerings</div>
+      <h2 class="section-heading">Everything You Need for a<br /><em>Perfect Stay</em></h2>
+      <p>From our curated studio rooms to world-class dining and the perfect gateway into Kirinyaga County — RosaBlu is where comfort meets authenticity.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <!-- Card 1: Studio Rooms -->
+      <article class="feature-card" aria-labelledby="feat-rooms-title">
+        <div class="feature-card-img">
+          <img
+            src="rosablue hotel rooms pic.avif"
+            alt="RosaBlu Hotel premium studio rooms and accommodation"
+            loading="lazy"
+          />
+        </div>
+        <div class="feature-card-body">
+          <div class="feature-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3 id="feat-rooms-title">Studio Rooms &amp; Airbnb</h3>
+          <p>An exclusive 7-room boutique sanctuary featuring clean minimalist architecture, royal blue accents, comfortable bedding, and guaranteed late check-outs. Every room is designed with your total comfort and privacy in mind.</p>
+          <a href="#reserve" class="feature-card-cta">
+            Check Availability
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2: Restaurant -->
+      <article class="feature-card" aria-labelledby="feat-resto-title">
+        <div class="feature-card-img">
+          <img
+            src="rosablu hotel pic 1.webp"
+            alt="RosaBlu Hotel elegant restaurant dining area"
+            loading="lazy"
+          />
+        </div>
+        <div class="feature-card-body">
+          <div class="feature-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+            </svg>
+          </div>
+          <h3 id="feat-resto-title">The Restaurant &amp; Coffee Shop</h3>
+          <p>Home of our world-famous Jamaican Jerk Chicken — a well-seasoned, grilled chicken with an authentic marinade providing the perfect balance of heat and sweetness, served with crispy French fries. Amazingly tender, moist, and juicy in every single bite!</p>
+          <a href="#reserve" class="feature-card-cta">
+            View Menu
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3: Bar & Lounge -->
+      <article class="feature-card" aria-labelledby="feat-bar-title">
+        <div class="feature-card-img">
+          <img
+            src="bar and resturant rosablu.avif"
+            alt="RosaBlu Hotel ambient low-lit evening bar and lounge experience"
+            loading="lazy"
+          />
+        </div>
+        <div class="feature-card-body">
+          <div class="feature-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 22H16"/><path d="M12 11v11"/><path d="M5.8 5.8L12 11l6.2-5.2"/><path d="M5 3H19V9A7 7 0 005 9V3Z"/>
+            </svg>
+          </div>
+          <h3 id="feat-bar-title">The Bar, Lounge &amp; Terrace</h3>
+          <p>Unwind under warm, golden industrial statement lighting in our custom open-air wooden terrace lounge. The perfect spot for a cold drink or a freshly brewed specialty coffee. An atmosphere unlike anything else in Kirinyaga.</p>
+          <button class="feature-card-cta" id="loungeCTA">
+            Explore the Lounge
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="feature-card full-span" aria-labelledby="feat-excursions-title">
+        <div class="feature-card-img">
+          <!-- ── UPGRADE 1: Live Google Maps embed replacing static image ── -->
+          <div class="map-embed-wrapper" aria-label="Google Maps showing RosaBlu Hotel Kutus location">
+            <iframe
+              src="https://maps.google.com/maps?q=-0.5518,37.3325&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              title="RosaBlu Hotel Kutus — Google Maps location"
+              width="100%"
+              height="450"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="feature-card-body">
+          <div class="feature-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
+          </div>
+          <h3 id="feat-excursions-title">Local Gateway Excursions</h3>
+          <p style="font-size:1rem; max-width: 520px;">Your ideal launchpad for exploring Kirinyaga County. Located just an <strong>18-minute drive</strong> from the Kerugoya Urban Forest and Kerugoya Stadium, and only <strong>46 minutes</strong> from the majestic <strong>Mount Kenya National Park</strong>. Our team can help arrange transport and guided excursions upon request.</p>
+          <div style="display:flex; gap:16px; margin-top: 22px; flex-wrap:wrap;">
+            <div style="background:var(--bg-subtle); border-radius:8px; padding:14px 20px; text-align:center;">
+              <div style="font-family:var(--font-heading); font-size:1.8rem; font-weight:700; color:var(--brand-navy);">18 min</div>
+              <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.08em; margin-top:4px;">Kerugoya Forest</div>
+            </div>
+            <div style="background:var(--bg-subtle); border-radius:8px; padding:14px 20px; text-align:center;">
+              <div style="font-family:var(--font-heading); font-size:1.8rem; font-weight:700; color:var(--brand-navy);">46 min</div>
+              <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.08em; margin-top:4px;">Mt. Kenya Park</div>
+            </div>
+            <div style="background:var(--bg-subtle); border-radius:8px; padding:14px 20px; text-align:center;">
+              <div style="font-family:var(--font-heading); font-size:1.8rem; font-weight:700; color:var(--brand-navy);">200 m</div>
+              <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.08em; margin-top:4px;">Kutus-Samson Rd</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     VALENTINE'S PACKAGE SHOWCASE
+============================================================ -->
+<section id="packages" aria-label="Promotional Packages">
+  <div class="container">
+    <div class="section-intro">
+      <div class="section-label" style="color: rgba(245,208,0,0.8);">
+        <span style="background:rgba(245,208,0,0.8); width:24px; height:1px; display:block;"></span>
+        Limited Time Offer
+      </div>
+      <h2 class="section-heading">Special Valentine's Package<br /><em>A Fairytale Evening for Two</em></h2>
+      <p>Two incredible ways to celebrate love at RosaBlu. Choose the experience that suits your occasion.</p>
+    </div>
+
+    <div class="packages-grid">
+
+      <!-- Package 1: Night Stay + Dining -->
+      <article class="pkg-card" aria-labelledby="pkg1-title">
+        <div class="pkg-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          Most Popular
+        </div>
+        <div class="pkg-price"><sup>KES</sup> 4,500</div>
+        <div class="pkg-price-label">Per couple · One night</div>
+        <h3 class="pkg-name" id="pkg1-title">Night Stay + Lunch/Dinner for Two</h3>
+        <ul class="pkg-includes" aria-label="Package includes">
+          <li>Accommodation for two guests</li>
+          <li>Jamaican Jerk Chicken <em>or</em> Lamb/Pork Chops (your choice)</li>
+          <li>English Breakfast for two</li>
+          <li>Cocktail, Wine, or Mojito</li>
+          <li>Mint Chocolate for two</li>
+          <li>A beautiful Red Rose</li>
+          <li>Guaranteed Late Check-Out</li>
+        </ul>
+        <button class="pkg-book-btn" data-package="Night Stay + Lunch/Dinner for 2" data-price="4500" id="pkg1Btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M13 0C5.373 0 0 5.373 0 12c0 2.025.507 3.96 1.4 5.66L0 24l6.525-1.38A11.94 11.94 0 0013 24c6.627 0 12-5.373 12-12S19.627 0 13 0zm0 22c-1.85 0-3.604-.48-5.12-1.326l-.36-.214-3.876.82.836-3.78-.235-.386C3.46 15.592 3 13.838 3 12 3 6.477 7.477 2 13 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Book via WhatsApp
+        </button>
+      </article>
+
+      <!-- Package 2: Couple's Dinner -->
+      <article class="pkg-card" aria-labelledby="pkg2-title">
+        <div class="pkg-badge" style="background: rgba(245,208,0,0.15); color: var(--brand-yellow); border: 1px solid rgba(245,208,0,0.3);">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/></svg>
+          Dining Only
+        </div>
+        <div class="pkg-price"><sup>KES</sup> 2,000</div>
+        <div class="pkg-price-label">Per couple · Lunch or Dinner</div>
+        <h3 class="pkg-name" id="pkg2-title">Couple's Dinner or Lunch</h3>
+        <ul class="pkg-includes" aria-label="Package includes">
+          <li>Premium Chops (Lamb or Pork) for two</li>
+          <li>Signature Cocktail, Fresh Juice, or Mocktail</li>
+          <li>Mint Chocolate Bar for two</li>
+          <li>A beautiful Red Rose</li>
+          <li>A romantic, curated ambience</li>
+        </ul>
+        <button class="pkg-book-btn" style="background: transparent; color: var(--brand-yellow); border: 1.5px solid rgba(245,208,0,0.4);" data-package="Couple's Dinner/Lunch for 2" data-price="2000" id="pkg2Btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M13 0C5.373 0 0 5.373 0 12c0 2.025.507 3.96 1.4 5.66L0 24l6.525-1.38A11.94 11.94 0 0013 24c6.627 0 12-5.373 12-12S19.627 0 13 0zm0 22c-1.85 0-3.604-.48-5.12-1.326l-.36-.214-3.876.82.836-3.78-.235-.386C3.46 15.592 3 13.838 3 12 3 6.477 7.477 2 13 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Book via WhatsApp
+        </button>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     RESERVATION & CONTACT SECTION
+============================================================ -->
+<section id="reserve" aria-label="Make a Reservation">
+  <div class="container">
+    <div class="reserve-layout">
+
+      <!-- Left: Info -->
+      <div class="reserve-info">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-heading">Reserve Your<br /><em>RosaBlu Experience</em></h2>
+        <p>Fill out the quick form and your enquiry will be sent directly to our team via WhatsApp — we'll confirm within minutes. For immediate assistance, call or message us directly.</p>
+
+        <ul class="contact-list" aria-label="Contact information">
+          <li>
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.19h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <span><a href="tel:+254751299445">+254 751 299 445</a></span>
+          </li>
+          <li>
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <span>200m off Kutus-Samson Corner Road, Kutus Town, Kirinyaga County</span>
+          </li>
+          <li>
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <span>Check-in: <strong>12:00 noon</strong> · Late check-out available on packages</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: Reservation Form Card -->
+      <div class="reserve-form-card" role="form" aria-label="Reservation enquiry form">
+        <h3>Quick Reservation</h3>
+
+        <!-- Estimator Trigger inside form card -->
+        <button class="estimator-trigger" id="formEstimatorBtn" type="button" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          🧮 Open Live Cost Estimator
+        </button>
+
+        <form id="reservationForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guestName">Full Name *</label>
+              <input type="text" id="guestName" name="guestName" placeholder="Jane Mwangi" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="guestPhone">Phone / WhatsApp *</label>
+              <input type="tel" id="guestPhone" name="guestPhone" placeholder="+254 7XX XXX XXX" required autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="packageType">Package / Interest *</label>
+            <select id="packageType" name="packageType" required>
+              <option value="" disabled selected>Select a package or enquiry type</option>
+              <option value="Night Stay + Lunch/Dinner for 2 (KES 4,500)">Night Stay + Lunch/Dinner for 2 — KES 4,500</option>
+              <option value="Couple's Dinner/Lunch for 2 (KES 2,000)">Couple's Dinner/Lunch for 2 — KES 2,000</option>
+              <option value="Studio Room Only">Studio Room Only</option>
+              <option value="Restaurant / Dining Reservation">Restaurant / Dining Reservation</option>
+              <option value="General Enquiry">General Enquiry</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkInDate">Check-In / Visit Date *</label>
+              <input type="date" id="checkInDate" name="checkInDate" required />
+            </div>
+            <div class="form-group">
+              <label for="numGuests">No. of Guests</label>
+              <input type="number" id="numGuests" name="numGuests" min="1" max="20" placeholder="2" value="2" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="specialRequests">Special Requests or Message</label>
+            <textarea id="specialRequests" name="specialRequests" placeholder="e.g. Late arrival, dietary requirements, anniversary setup..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.507 3.96 1.4 5.66L0 24l6.525-1.38A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.85 0-3.604-.48-5.12-1.326l-.36-.214-3.876.82.836-3.78-.235-.386C2.46 15.592 2 13.838 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Send via WhatsApp →
+          </button>
+        </form>
+
+        <p class="form-note">Your enquiry is sent securely to our team via WhatsApp for immediate response. No spam, ever.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     UPGRADE 2: GUEST EXPERIENCES & REVIEWS SECTION
+============================================================ -->
+<section id="testimonials" aria-label="Guest Reviews and Testimonials">
+  <div class="container">
+
+    <div class="section-intro">
+      <div class="section-label">Guest Experiences</div>
+      <h2 class="section-heading">Loved by Every<br /><em>Guest Who Stays</em></h2>
+      <p>Real words from real guests — the stories that make RosaBlu more than just a hotel.</p>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <!-- Review 1: Alex M. -->
+      <article class="testimonial-card" aria-label="Review by Alex M.">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+          <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+        </div>
+        <blockquote class="testimonial-quote">
+          The absolute best Jamaican Jerk Chicken I have ever had outside of Nairobi! Tender, perfectly balanced sweetness and heat. The open-air terrace layout is exceptional.
+        </blockquote>
+        <div class="testimonial-divider" aria-hidden="true"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">A</div>
+          <div class="testimonial-author-info">
+            <span class="testimonial-author-name">Alex M.</span>
+            <span class="testimonial-author-role">Executive Guest</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review 2: Dr. Esther W. -->
+      <article class="testimonial-card" aria-label="Review by Dr. Esther W.">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+          <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+        </div>
+        <blockquote class="testimonial-quote">
+          Stayed here during a weekend business summit in Kirinyaga. High-speed Wi-Fi made working from my room seamless. The room means absolute quiet and privacy.
+        </blockquote>
+        <div class="testimonial-divider" aria-hidden="true"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">E</div>
+          <div class="testimonial-author-info">
+            <span class="testimonial-author-name">Dr. Esther W.</span>
+            <span class="testimonial-author-role">Corporate Trainer</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review 3: Mercy & Sam -->
+      <article class="testimonial-card" aria-label="Review by Mercy and Sam">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+          <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+        </div>
+        <blockquote class="testimonial-quote">
+          We booked the Fairytale Night Stay package for our anniversary. The presentation, the red roses, and the late check-out till 11:00 AM made it incredibly special. A hidden gem.
+        </blockquote>
+        <div class="testimonial-divider" aria-hidden="true"></div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">M</div>
+          <div class="testimonial-author-info">
+            <span class="testimonial-author-name">Mercy &amp; Sam</span>
+            <span class="testimonial-author-role">Weekend Travelers</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /testimonials-grid -->
+
+    <!-- Trust Stats Bar -->
+    <div class="trust-bar" aria-label="RosaBlu trust statistics">
+      <div class="trust-item">
+        <span class="trust-value">7</span>
+        <span class="trust-label">Boutique Rooms</span>
+      </div>
+      <div class="trust-sep" aria-hidden="true"></div>
+      <div class="trust-item">
+        <span class="trust-value">5★</span>
+        <span class="trust-label">Guest Rating</span>
+      </div>
+      <div class="trust-sep" aria-hidden="true"></div>
+      <div class="trust-item">
+        <span class="trust-value">200m</span>
+        <span class="trust-label">From Main Road</span>
+      </div>
+      <div class="trust-sep" aria-hidden="true"></div>
+      <div class="trust-item">
+        <span class="trust-value">24/7</span>
+        <span class="trust-label">Guest Support</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer aria-label="Site Footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo" style="display:inline-flex;">
+          <div class="logo-icon">
+            <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="14" width="22" height="7" rx="2" fill="#0b1528"/>
+              <rect x="3" y="11" width="8" height="5" rx="1.5" fill="#0b1528" stroke="#0b1528" stroke-width="0.5"/>
+              <circle cx="18" cy="10" r="3" fill="#0b1528"/>
+              <path d="M4 21 L4 24 M22 21 L22 24" stroke="#0b1528" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span>RosaBlu Hotel</span>
+            <span>Kutus · Kirinyaga</span>
+          </div>
+        </a>
+        <p>A boutique escape in the heart of Kirinyaga County — where hospitality is a lifestyle, not a service.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#features">Studio Rooms</a></li>
+          <li><a href="#features">Restaurant & Café</a></li>
+          <li><a href="#features">Bar & Terrace Lounge</a></li>
+          <li><a href="#features">Local Excursions</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+254751299445">+254 751 299 445</a></li>
+          <li><a href="https://wa.me/254751299445" target="_blank" rel="noopener">WhatsApp Us</a></li>
+          <li><a href="#reserve">Make a Reservation</a></li>
+          <li><a href="#packages">View Packages</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 <span>RosaBlu Hotel Kutus</span>. All rights reserved. Kutus Town, Kirinyaga County, Kenya.</p>
+      <p>Built with <span>♥</span> for exceptional hospitality.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     SLIDING COST ESTIMATOR DRAWER
+============================================================ -->
+<div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+
+<aside class="estimator-drawer" id="estimatorDrawer" role="dialog" aria-modal="true" aria-label="Live Cost Estimator">
+  <div class="drawer-header">
+    <div>
+      <h2>Cost Estimator</h2>
+      <span>RosaBlu Hotel · Live Pricing</span>
+    </div>
+    <button class="drawer-close" id="drawerClose" aria-label="Close cost estimator">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <div class="drawer-body">
+    <p class="estimator-section-title">Select Your Package</p>
+
+    <div class="estimator-field">
+      <label for="estPackageType">Package Type</label>
+      <select id="estPackageType">
+        <option value="stay">Night Stay + Lunch/Dinner for 2 — KES 4,500 / night</option>
+        <option value="dining">Couple's Dinner/Lunch for 2 — KES 2,000</option>
+      </select>
+    </div>
+
+    <div class="estimator-field" id="nightsField">
+      <label for="estNights">Number of Nights</label>
+      <input type="number" id="estNights" min="1" max="30" value="1" />
+    </div>
+
+    <div class="estimator-field" id="couplesField" style="display:none;">
+      <label for="estCouples">Number of Couples</label>
+      <input type="number" id="estCouples" min="1" max="10" value="1" />
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="estimator-section-title">Add-Ons</p>
+
+    <label class="checkbox-row" for="estBreakfast">
+      <input type="checkbox" id="estBreakfast" />
+      <div class="checkbox-label">
+        <span>Add English Breakfast</span>
+        <span>KES 300 per person · Served daily 7–10am</span>
+      </div>
+    </label>
+
+    <div class="estimator-field" id="breakfastPaxField" style="display:none; margin-top:14px;">
+      <label for="estBreakfastPax">Breakfast — No. of Persons</label>
+      <input type="number" id="estBreakfastPax" min="1" max="20" value="2" />
+    </div>
+
+    <!-- Total Display Box -->
+    <div class="total-box" aria-live="polite" aria-label="Estimated total cost">
+      <div class="total-label">Estimated Total</div>
+      <div class="total-amount" id="totalAmount"><span class="total-currency">KES </span><span id="totalValue">4,500</span></div>
+      <div class="total-breakdown" id="totalBreakdown"></div>
+    </div>
+
+    <p class="billing-disclaimer"><em>* This is an indicative estimate only. Final pricing is confirmed at check-in or upon reservation. Prices shown are inclusive of all standard package inclusions as listed.</em></p>
+
+    <div class="divider"></div>
+
+    <button class="form-submit-btn" id="estimatorWhatsApp" style="margin-top: 4px;" type="button">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.507 3.96 1.4 5.66L0 24l6.525-1.38A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.85 0-3.604-.48-5.12-1.326l-.36-.214-3.876.82.836-3.78-.235-.386C2.46 15.592 2 13.838 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Book This Package via WhatsApp
+    </button>
+  </div>
+</aside>
+
+
+<!-- ============================================================
+     TOAST NOTIFICATION
+============================================================ -->
+<div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+
+<!-- ============================================================
+     JAVASCRIPT — ALL INTERACTIONS
+============================================================ -->
+<script>
+  'use strict';
+
+  /* ============================================================
+     RATE CONSTANTS
+  ============================================================ */
+  const RATE_STAY_PACKAGE    = 4500;
+  const RATE_DINING_PACKAGE  = 2000;
+  const RATE_BREAKFAST_ADDON = 300;
+  const WHATSAPP_NUMBER      = '254751299445';
+
+  /* ============================================================
+     UTILITY: FORMAT CURRENCY
+  ============================================================ */
+  const formatKES = (n) => 'KES ' + n.toLocaleString('en-KE');
+
+  /* ============================================================
+     NAV: SCROLL STATE & HAMBURGER
+  ============================================================ */
+  const navbar    = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.classList.toggle('open', isOpen);
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  /* ============================================================
+     TOAST UTILITY
+  ============================================================ */
+  function showToast(message, duration = 3000) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), duration);
+  }
+
+  /* ============================================================
+     DRAWER: OPEN / CLOSE
+  ============================================================ */
+  const drawer   = document.getElementById('estimatorDrawer');
+  const backdrop = document.getElementById('drawerBackdrop');
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    backdrop.classList.add('visible');
+    backdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // Focus trap: move focus to drawer
+    drawer.querySelector('select, input, button').focus();
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    backdrop.classList.remove('visible');
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+
+  // Open triggers
+  document.getElementById('heroEstimatorBtn').addEventListener('click', openDrawer);
+  document.getElementById('formEstimatorBtn').addEventListener('click', openDrawer);
+
+  // Package quick-book buttons pre-select and open drawer
+  document.getElementById('pkg1Btn').addEventListener('click', () => {
+    document.getElementById('estPackageType').value = 'stay';
+    updateEstimator();
+    openDrawer();
+  });
+  document.getElementById('pkg2Btn').addEventListener('click', () => {
+    document.getElementById('estPackageType').value = 'dining';
+    updateEstimator();
+    openDrawer();
+  });
+
+  // Keyboard close (Escape)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+  });
+
+  /* ============================================================
+     LIVE COST ESTIMATOR LOGIC
+  ============================================================ */
+  const estPackageType   = document.getElementById('estPackageType');
+  const estNights        = document.getElementById('estNights');
+  const estCouples       = document.getElementById('estCouples');
+  const estBreakfast     = document.getElementById('estBreakfast');
+  const estBreakfastPax  = document.getElementById('estBreakfastPax');
+  const nightsField      = document.getElementById('nightsField');
+  const couplesField     = document.getElementById('couplesField');
+  const breakfastPaxField= document.getElementById('breakfastPaxField');
+  const totalValue       = document.getElementById('totalValue');
+  const totalBreakdown   = document.getElementById('totalBreakdown');
+
+  function updateEstimator() {
+    const pkg    = estPackageType.value;
+    const nights = Math.max(1, parseInt(estNights.value) || 1);
+    const couples= Math.max(1, parseInt(estCouples.value) || 1);
+    const bPax   = Math.max(1, parseInt(estBreakfastPax.value) || 2);
+    const addBfast = estBreakfast.checked;
+
+    // Show/hide relevant fields
+    if (pkg === 'stay') {
+      nightsField.style.display  = 'block';
+      couplesField.style.display = 'none';
+    } else {
+      nightsField.style.display  = 'none';
+      couplesField.style.display = 'block';
+    }
+    breakfastPaxField.style.display = addBfast ? 'block' : 'none';
+
+    // Calculate
+    let base = 0;
+    let breakdown = [];
+
+    if (pkg === 'stay') {
+      base = RATE_STAY_PACKAGE * nights;
+      breakdown.push(`Night Stay Package: KES ${RATE_STAY_PACKAGE.toLocaleString()} × ${nights} night${nights > 1 ? 's' : ''}`);
+    } else {
+      base = RATE_DINING_PACKAGE * couples;
+      breakdown.push(`Dining Package: KES ${RATE_DINING_PACKAGE.toLocaleString()} × ${couples} couple${couples > 1 ? 's' : ''}`);
+    }
+
+    let breakfastCost = 0;
+    if (addBfast) {
+      const bNights = pkg === 'stay' ? nights : 1;
+      breakfastCost = RATE_BREAKFAST_ADDON * bPax * bNights;
+      breakdown.push(`Breakfast: KES ${RATE_BREAKFAST_ADDON} × ${bPax} pax${pkg === 'stay' && bNights > 1 ? ` × ${bNights} nights` : ''}`);
+    }
+
+    const total = base + breakfastCost;
+
+    // Animate total update
+    totalValue.style.transform = 'scale(0.92)';
+    totalValue.style.opacity   = '0.5';
+    setTimeout(() => {
+      document.getElementById('totalValue').textContent = total.toLocaleString('en-KE');
+      totalBreakdown.innerHTML = breakdown.map(l => `<span>• ${l}</span>`).join('');
+      totalValue.style.transform = '';
+      totalValue.style.opacity   = '';
+    }, 120);
+  }
+
+  // Attach listeners
+  [estPackageType, estNights, estCouples, estBreakfastPax].forEach(el => {
+    el.addEventListener('input', updateEstimator);
+  });
+  estBreakfast.addEventListener('change', updateEstimator);
+
+  // Initial render
+  updateEstimator();
+
+  /* ============================================================
+     ESTIMATOR DRAWER: WHATSAPP BOOKING
+  ============================================================ */
+  document.getElementById('estimatorWhatsApp').addEventListener('click', () => {
+    const pkg    = estPackageType.options[estPackageType.selectedIndex].text;
+    const total  = document.getElementById('totalValue').textContent;
+    const addBfast = estBreakfast.checked ? 'Yes' : 'No';
+
+    const message = [
+      '*RosaBlu Hotel Kutus — Package Enquiry*',
+      '',
+      `*Package:* ${pkg}`,
+      `*Add English Breakfast:* ${addBfast}`,
+      `*Estimated Total:* KES ${total}`,
+      '',
+      '_Please confirm availability and send payment details. Thank you!_'
+    ].join('\n');
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    closeDrawer();
+  });
+
+  /* ============================================================
+     RESERVATION FORM: VALIDATION + WHATSAPP COMPILATION
+  ============================================================ */
+  const reservationForm = document.getElementById('reservationForm');
+
+  function flashError(fieldEl) {
+    fieldEl.classList.add('error');
+    fieldEl.focus();
+    setTimeout(() => fieldEl.classList.remove('error'), 2000);
+  }
+
+  function sanitize(str) {
+    return String(str || '').replace(/[<>]/g, '').trim();
+  }
+
+  reservationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name     = document.getElementById('guestName');
+    const phone    = document.getElementById('guestPhone');
+    const pkg      = document.getElementById('packageType');
+    const date     = document.getElementById('checkInDate');
+    const guests   = document.getElementById('numGuests');
+    const requests = document.getElementById('specialRequests');
+
+    // Validation: check required fields
+    if (!sanitize(name.value)) { flashError(name); showToast('⚠️ Please enter your full name.'); return; }
+    if (!sanitize(phone.value)) { flashError(phone); showToast('⚠️ Please enter your phone number.'); return; }
+    if (!pkg.value) { flashError(pkg); showToast('⚠️ Please select a package or enquiry type.'); return; }
+    if (!sanitize(date.value)) { flashError(date); showToast('⚠️ Please select a check-in or visit date.'); return; }
+
+    // Compile WhatsApp message
+    const message = [
+      '*🌹 RosaBlu Hotel Kutus — Reservation Request*',
+      '─────────────────────────────',
+      `*👤 Guest Name:* ${sanitize(name.value)}`,
+      `*📱 Phone / WhatsApp:* ${sanitize(phone.value)}`,
+      `*🎁 Package / Enquiry:* ${sanitize(pkg.options[pkg.selectedIndex].text)}`,
+      `*📅 Date:* ${sanitize(date.value)}`,
+      `*👥 No. of Guests:* ${sanitize(guests.value) || '2'}`,
+      sanitize(requests.value) ? `*💬 Special Requests:* ${sanitize(requests.value)}` : '',
+      '─────────────────────────────',
+      '_Sent via RosaBluHotel.co.ke_'
+    ].filter(Boolean).join('\n');
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    showToast('✅ Opening WhatsApp — your enquiry is ready to send!', 4000);
+
+    // Optional: reset form after brief delay
+    setTimeout(() => reservationForm.reset(), 2500);
+  });
+
+  /* ============================================================
+     LOUNGE CTA (opens drawer)
+  ============================================================ */
+  document.getElementById('loungeCTA').addEventListener('click', openDrawer);
+
+  /* ============================================================
+     INTERSECTION OBSERVER — SCROLL REVEAL
+  ============================================================ */
+  const revealItems = document.querySelectorAll('.feature-card, .pkg-card, .testimonial-card');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = `${(i % 4) * 0.07}s`;
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  revealItems.forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(28px)';
+    item.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    revealObserver.observe(item);
+  });
+
+  /* ============================================================
+     SET MIN DATE FOR CHECK-IN INPUT
+  ============================================================ */
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('checkInDate').setAttribute('min', today);
+
+</script>
+
+</body>
+</html>
